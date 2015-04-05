@@ -26,7 +26,7 @@ public class CalIndex2 {
 	private Map<Integer, Map<Long, Integer>> wordMap = new HashMap<Integer, Map<Long, Integer>>();
 	// 单词的独立性
 	private Map<Integer, Float> wordAlone = new HashMap<Integer, Float>();
-	
+
 	/**
 	 * 构造函数
 	 */
@@ -127,7 +127,7 @@ public class CalIndex2 {
 				}
 				// 下个单词不是标点符号
 				if (i + 1 < words.length
-						&& !words[i + 1].matches("(\\pP)")) {
+						&& !words[i + 1].matches("(\\pP)|(\\s)")) {
 					if (!wordIndex.containsKey(words[i + 1])) {
 						wordIndex.put(words[i + 1], count);
 						indexWord.put(count++, words[i + 1]);
@@ -162,8 +162,7 @@ public class CalIndex2 {
 					wordMap.put(indexNext, mulIndexCount2);
 				}
 
-			} else
-				i++;
+			} 
 		}
 	}
 
@@ -178,12 +177,21 @@ public class CalIndex2 {
 			Map<Long, Integer> mulIndexAndCount = wordMap.get(index);
 			Iterator<Long> mul = mulIndexAndCount.keySet().iterator();
 			int sum = 0;
-			String word = indexWord.get(index);
+			//String word = indexWord.get(index);
+			//System.out.print(word+"  :");
 			while (mul.hasNext()) {
 				Long indexTemp = mul.next();
 				sum += mulIndexAndCount.get(indexTemp);
+				/*int left = (int)(indexTemp/100000);
+				int right = (int)(indexTemp%100000);
+				String leftStr = indexWord.get(left);
+				String rightStr = indexWord.get(right);
+				System.out.print(leftStr + " "+rightStr+"	");*/
 			}
+			//System.out.println();
 			double temp = pa - (sum * 1.0 / docNum / wordMap.get(index).size());
+			//System.out.println(sum + "	"+wordCount.get(index)+" 	"+temp);
+			
 			float alone = (float) Math.log(temp);
 			wordAlone.put(index, alone);
 		}
@@ -205,7 +213,7 @@ public class CalIndex2 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		CalIndex2 cal = new CalIndex2("D:\\article.txt");
+		CalIndex2 cal = new CalIndex2("D:\\article2.txt");
 		cal.calAlone();
 		cal.printAlone("D:\\alone.txt");
 		System.out.println("结束");

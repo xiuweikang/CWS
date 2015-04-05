@@ -65,8 +65,11 @@ public class CalIndex {
 			}
 			pos--;
 		}
-		temp = line.split("	", 2);
-		docNum = Integer.parseInt(temp[0]);
+		if (line != "") {
+			temp = line.split("	", 2);
+			docNum = Integer.parseInt(temp[0]);
+		} else
+			docNum = 1;
 		return docNum;
 	}
 
@@ -220,8 +223,7 @@ public class CalIndex {
 					}
 					wordMap.put(indexNext, mulIndexCount2);
 				}
-			} else
-				i++;
+			} 
 		}
 	}
 
@@ -246,7 +248,7 @@ public class CalIndex {
 					mulIndexCount = wordMap.get(index);
 				}
 				// 下个单词不是标点符号
-				if (i + 1 < words.length && !words[i + 1].matches("(\\pP)")) {
+				if (i + 1 < words.length && !words[i + 1].matches("(\\pP)|(\\s)")) {
 					if (!wordIndex.containsKey(words[i + 1])) {
 						wordIndex.put(words[i + 1], count);
 						indexWord.put(count++, words[i + 1]);
@@ -281,8 +283,7 @@ public class CalIndex {
 					wordMap.put(indexNext, mulIndexCount2);
 				}
 
-			} else
-				i++;
+			} 
 		}
 	}
 
@@ -297,7 +298,6 @@ public class CalIndex {
 			Map<Long, Integer> mulIndexAndCount = wordMap.get(index);
 			Iterator<Long> mul = mulIndexAndCount.keySet().iterator();
 			int sum = 0;
-			String word = indexWord.get(index);
 			while (mul.hasNext()) {
 				Long indexTemp = mul.next();
 				sum += mulIndexAndCount.get(indexTemp);
@@ -336,8 +336,8 @@ public class CalIndex {
 	}
 
 	public static void main(String[] args) throws IOException {
-		CalIndex cal = new CalIndex("F:\\article.txt", "F:\\ss3.txt");
-		cal.printAlone("F:\\alone.txt");
+		CalIndex cal = new CalIndex("D:\\article2.txt", "D:\\ss3.txt");
+		cal.printAlone("D:\\alone.txt");
 		System.out.println("结束");
 	}
 }
