@@ -1,7 +1,7 @@
+package com.java.html;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -70,6 +70,7 @@ public class CalIndex {
 			docNum = Integer.parseInt(temp[0]);
 		} else
 			docNum = 1;
+		rand.close();
 		return docNum;
 	}
 
