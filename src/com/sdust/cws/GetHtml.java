@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

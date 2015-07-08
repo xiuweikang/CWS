@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 // 计算独立性指标
-public class CalIndex2 {
+public class CalClose {
 	// 词个数统计
 	int count = 1;
 	int docNum;
@@ -31,12 +31,12 @@ public class CalIndex2 {
 	/**
 	 * 构造函数
 	 */
-	public CalIndex2(String file) throws IOException {
+	public CalClose(String file) throws IOException {
 		init_all(file);
 		this.docNum = getDocNum(file);
 	}
 
-	public CalIndex2(String file, int[] cluster) throws IOException {
+	public CalClose(String file, int[] cluster) throws IOException {
 		init_cluster(file, cluster);
 		this.docNum = cluster.length;
 	}
@@ -220,7 +220,7 @@ public class CalIndex2 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		CalIndex2 cal = new CalIndex2("D:\\article2.txt");
+		CalClose cal = new CalClose("D:\\article2.txt");
 		cal.calAlone();
 		cal.printAlone("D:\\alone.txt");
 		System.out.println("结束");

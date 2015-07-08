@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 //计算指标
-public class CalIndex {
+public class CalAlone {
 	// 词个数统计
 	int count = 1;
 	int docNum;
@@ -33,13 +33,13 @@ public class CalIndex {
 	/**
 	 * 构造函数
 	 */
-	public CalIndex(String file) throws IOException {
+	public CalAlone(String file) throws IOException {
 		init_all(file);
 		this.docNum = getDocNum(file);
 		calAlone(0);
 	}
 
-	public CalIndex(String file, String clusterFile) throws IOException {
+	public CalAlone(String file, String clusterFile) throws IOException {
 		init_cluster(clusterFile);
 		init_all(file);
 		this.docNum = getDocNum(file);
@@ -337,7 +337,7 @@ public class CalIndex {
 	}
 
 	public static void main(String[] args) throws IOException {
-		CalIndex cal = new CalIndex("D:\\article2.txt", "D:\\ss3.txt");
+		CalAlone cal = new CalAlone("D:\\article2.txt", "D:\\ss3.txt");
 		cal.printAlone("D:\\alone.txt");
 		System.out.println("结束");
 	}

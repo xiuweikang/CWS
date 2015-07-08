@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,7 +25,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 获取文件目录中所有html文件
-	 * */ 
+	 * */
 	public void loop(String directory, List<String> list) {// 要获得绝对路径名则每层都传入绝对路径名，注意List不是获得绝对路径
 		File f = new File(directory);
 		if (f.isDirectory()) {
@@ -36,11 +36,12 @@ public class CrawledPages {
 		} else
 			list.add(f.getAbsolutePath());
 	}
-    /*
-     * 
-     * 
-     * 得到url文件内容
-     * */
+
+	/*
+	 * 
+	 * 
+	 * 得到url文件内容
+	 * */
 	public String getHtmlContent(String Url) {
 		StringBuffer sb = new StringBuffer();
 		URL url;
@@ -59,10 +60,11 @@ public class CrawledPages {
 		}
 		return sb.toString();
 	}
-   /*
-    * 
-    * 抓取内容
-    * */
+
+	/*
+	 * 
+	 * 抓取内容
+	 * */
 	public String crawledContent(String htmlUrlContent, String regex) {
 		String crawledContent = "";
 		List<String> list = new ArrayList<String>();
@@ -80,7 +82,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 得到网易一个网页新闻内容
-	 * */ 
+	 * */
 	public String[] getWE(String Url) {
 		String content;
 		String[] result = new String[2];
@@ -106,7 +108,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 得到搜狐一个网页新闻内容
-	 * */ 
+	 * */
 	public String[] getSoHu(String htmlUrl) {
 		String content;
 		String title;
@@ -227,7 +229,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 得到网易搜狐的所有新闻信息
-	 * */ 
+	 * */
 	public void getAllSoHu(String filepath) throws Exception {
 		List<String> list = new ArrayList();
 		String[] result = new String[2];
@@ -256,7 +258,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 得到新浪搜狐的所有新闻信息
-	 * */ 
+	 * */
 	public void getAllSina(String filepath) throws Exception {
 		List<String> list = new ArrayList();
 		String[] result = new String[2];
@@ -286,7 +288,7 @@ public class CrawledPages {
 	/*
 	 * 
 	 * 得到腾讯搜狐的所有新闻信息
-	 * */ 
+	 * */
 	public void getAllQQ(String filepath) throws Exception {
 		List<String> list = new ArrayList();
 		String[] result = new String[2];
@@ -313,11 +315,11 @@ public class CrawledPages {
 	public static void main(String[] agr0) throws Exception {
 		CrawledPages cp = new CrawledPages();
 
-//		cp.getAllWE("D:\\世界杯\\解析资源\\163");
+		// cp.getAllWE("D:\\世界杯\\解析资源\\163");
 		cp.getAllSoHu("D:\\世界杯\\解析资源\\搜狐");
 		System.out.println("终于运行完了");
 		// cp.getAllSina("D:\\解析\\sina");
-//		 cp.getAllQQ("D:\\解析\\QQ");
+		// cp.getAllQQ("D:\\解析\\QQ");
 	}
 
 }

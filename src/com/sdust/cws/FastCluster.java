@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 
 /**
  * 相似度对象
@@ -90,16 +89,17 @@ class Simily {
 			for (int i = 1; i < row.length; i++) {
 				String ele[] = row[i].split(":");
 				// 检查文件号及其相似度
-				int columID=0;
-				float sim=0;
-				if ((!ele[0].matches("\\d+") || (columID=Integer.parseInt(ele[0])) <= 0)
-						&& (!ele[1].matches("(\\d)|(\\d\\.\\d+)") || ((sim=Float
+				int columID = 0;
+				float sim = 0;
+				if ((!ele[0].matches("\\d+") || (columID = Integer
+						.parseInt(ele[0])) <= 0)
+						&& (!ele[1].matches("(\\d)|(\\d\\.\\d+)") || ((sim = Float
 								.parseFloat(ele[1])) < 0 || sim > 1))) {
 					System.out.println("您输入的格式有问题，在第" + count + "行！");
 					System.exit(1);
 				}
-				if(rowID<columID)
-				    cos[rowID][columID - rowID - 1] = sim;
+				if (rowID < columID)
+					cos[rowID][columID - rowID - 1] = sim;
 				else
 					cos[columID][rowID - columID - 1] = sim;
 			}
@@ -241,7 +241,7 @@ public class FastCluster {
 	private void printPQ(String pqFile) throws IOException {
 		BufferedWriter out = new BufferedWriter(new FileWriter(pqFile));
 		for (int i = 1; i <= docNum; i++) {
-			out.write(doc[i].id + "	" + doc[i].p  + "	" + doc[i].q + "	"
+			out.write(doc[i].id + "	" + doc[i].p + "	" + doc[i].q + "	"
 					+ doc[i].q * doc[i].p);
 			out.newLine();
 		}

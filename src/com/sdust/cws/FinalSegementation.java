@@ -1,4 +1,4 @@
-package com.java.html;
+package com.sdust.cws;
 
 import ICTCLAS.I3S.AC.ICTCLAS50;
 import java.io.BufferedReader;
@@ -71,7 +71,7 @@ public class FinalSegementation {
 	public Map<String, List<String>> getAllInformation(String filePath)
 			throws Exception {// filePath为存放国家txt的文件
 		Map<String, List<String>> map = new LinkedHashMap<String, List<String>>();
-//		System.out.println("进去了");
+		// System.out.println("进去了");
 		File file = new File(filePath);
 		String[] list = file.list();
 		for (String temp : list) {
@@ -90,7 +90,7 @@ public class FinalSegementation {
 	/*
 	 * 
 	 * 对字符串进行分词,其中导入自定义的词典
-	 * */ 
+	 * */
 	public String segementWord(String input) {
 		String result = "";
 		try {
@@ -151,7 +151,7 @@ public class FinalSegementation {
 	 * 
 	 * 
 	 * /创建自己的总的词典
-	 * */ 
+	 * */
 	public void CreateDic(Map<String, List<String>> map) throws IOException {
 		BufferedWriter out = new BufferedWriter(new FileWriter(new File(
 				"D:/世界杯/总词典.txt")));
@@ -169,7 +169,7 @@ public class FinalSegementation {
 	/*
 	 * 
 	 * 找出每个句子都属于哪个国家
-	 * */ 
+	 * */
 	public void matchSentence(String filePath, Map<String, List<String>> map)
 			throws Exception {
 		File file = new File(filePath);
@@ -232,7 +232,7 @@ public class FinalSegementation {
 
 	public static void main(String[] agrs) throws Exception {
 		FinalSegementation test1 = new FinalSegementation();
-	     test1.getSegeResult();
-	     System.out.println("结束了");
+		test1.getSegeResult();
+		System.out.println("结束了");
 	}
 }
